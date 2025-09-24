@@ -1,1 +1,69 @@
-<p>Hello World</p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Blog</title>
+
+    <!-- ✅ Correct Inline CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .posts {
+            padding: 20px;
+        }
+
+        .post {
+            background: white;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educational Blog</h1>
+    </header>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <small>By {{ post.author }} on {{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+        {% empty %}
+            <p>No posts yet!</p>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>© 2025 Educational Blog</p>
+    </footer>
+</body>
+</html>
